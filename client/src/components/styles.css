@@ -1,0 +1,103 @@
+.form-control {
+    width: 200px;
+    height: 28px;
+}
+
+.create-container {
+    padding: 20px;
+    background-color: #134A8E;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+}
+
+.form-container {
+    padding: 30px;
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    width: 75%;
+    height: 90vh;
+    -moz-box-shadow: 0 0 10px #333;
+    -webkit-box-shadow: 0 0 10px #333;
+    box-shadow: 0 0 10px #333;
+    overflow: scroll;
+}
+
+.browse-container {
+    padding: 20px;
+    background-color: #134A8E;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    max-height: 1000px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+}
+
+.player-container {
+    margin-top: 15px;
+    padding: 20px;
+}
+
+.create-label {
+    margin: 2px;
+    font-size: 0.85rem;
+}
+
+.btn-primary {
+    align-items: flex-end;
+}
+
+.browse-text {
+    font-size: 0.7rem;
+    padding: 2px;
+    margin: 0px;
+}
+
+.browse-field {
+    font-size: 0.85rem;
+    padding: 2px;
+    margin: 0px;
+    font-weight: 700;
+}
+
+.browse-field-name {
+    font-size: 0.85rem;
+    padding: 0px;
+    margin: 0px;
+    font-weight: 700;
+}
+
+.browse-grade {
+    font-size: 0.8rem;
+    padding: 2px;
+    margin: 0px;
+    font-weight: 700;
+}
+
+.row { 
+    margin-top: 10px;
+    margin-left: 2px;
+}
+
+.title-text {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.column-name {
+    margin-bottom: 25px;
+}
+
+.edit-delete-button {
+    padding: 0;
+    border: none;
+    background: none;
+}
