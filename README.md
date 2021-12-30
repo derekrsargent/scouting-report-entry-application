@@ -12,5 +12,4 @@ In the root of the project directory run `npm install-all` to install the packag
 
 To run the app, in the root of the project directory run `npm run dev`.
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\The 
-backend runs at [http://localhost:5000](http://localhost:5000).
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The backend runs at [http://localhost:5000](http://localhost:5000).
