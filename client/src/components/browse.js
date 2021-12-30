@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdDelete, MdEdit } from "react-icons/md";
 import axios from 'axios';
 import './styles.css';
@@ -9,6 +9,7 @@ const BrowseScoutingReports = () => {
     const [data, setData] = useState(null);
     const [filteredData, setFilteredData] = useState(null);
     const [searchValueState, setSearchValueState] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -20,7 +21,8 @@ const BrowseScoutingReports = () => {
 
     useEffect(() => {
         data && setFilteredData(data.filter(
-            player => player.name.toLowerCase().includes(searchValueState.toLowerCase()))
+            player => player.name !== null && 
+                player.name.toLowerCase().includes(searchValueState.toLowerCase()))
         );
     }, [searchValueState, data]);
 
@@ -30,29 +32,32 @@ const BrowseScoutingReports = () => {
     };
 
     const handleDelete = (id) => {
-        alert(id);
+        axios
+            .post(`/delete/${id}`)
+            .then(setData(prevState => prevState.filter(el => el._id !== id)));
     };
 
     const handleEdit = (id) => {
-        alert(id);
+        const editData = data.filter(el => el._id === id);
+        navigate('/edit', { state: editData[0] });
     };
 
-    const DisplayScoutingReport = ({report}) => (
+    const DisplayScoutingReport = ({ report }) => (
         <div className="player-container">
-            <div className="row d-flex justify-content-between" style={{width: 525}}>
+            <div className="row d-flex justify-content-between" style={{ width: 525 }}>
                 <p className="browse-field-name"><b>Name:</b> {report.name}</p>
                 <div>
                     <button 
                         className="edit-delete-button" 
                         style={{ outline: 'none', marginRight: 5 }} 
-                        onClick={() => handleDelete(report._id)}
+                        onClick={() => handleEdit(report._id)}
                     >
                         <MdEdit size={20} />
                     </button>
                     <button 
                         className="edit-delete-button" 
                         style={{ outline: 'none' }} 
-                        onClick={() => handleEdit(report._id)}
+                        onClick={() => handleDelete(report._id)}
                     >
                         <MdDelete size={20} />
                     </button>
@@ -67,7 +72,7 @@ const BrowseScoutingReports = () => {
                 {report.power && <p className="browse-grade"><b>POWER:</b>  {report.power} <b>|</b></p>}
                 {report.run && <p className="browse-grade"><b>RUN:</b>  {report.run} <b>|</b></p>}
                 {report.field && <p className="browse-grade"><b>FIELD:</b>  {report.field} <b>|</b></p>}
-                {report._throw && <p className="browse-grade"><b>THROW:</b>  {report._throw}</p>}
+                {report.throw && <p className="browse-grade"><b>THROW:</b>  {report.throw}</p>}
             </div>
 
             <div className="row">
@@ -94,7 +99,14 @@ const BrowseScoutingReports = () => {
                     placeholder={"Search player's name"}
                     value={searchValueState || ''} 
                     onChange={handleSearch} 
-                    style={{ width: 300, marginTop: 8, paddingLeft: 12, borderRadius: 15, borderStyle: 'solid' }}
+                    style={{ 
+                        width: 300, 
+                        marginTop: 8, 
+                        paddingLeft: 12, 
+                        borderRadius: 15, 
+                        borderStyle: 'solid', 
+                        borderColor: 'darkgrey' 
+                    }}
                 />
                 {
                     filteredData && 
@@ -104,7 +116,7 @@ const BrowseScoutingReports = () => {
                 {
                     filteredData && 
                     filteredData.length <= 0 && 
-                    <p style={{fontSize: 16, marginTop: 20, marginLeft: 8}}><b>No results found.</b></p>
+                    <p style={{fontSize: 14, marginTop: 30, marginLeft: 8}}><b>No results found.</b></p>
                 }
             </div>
         </div>

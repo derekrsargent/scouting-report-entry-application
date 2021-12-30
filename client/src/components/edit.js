@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './styles.css';
 
 
-const CreateScoutingReport = () => {
+const EditScoutingReport = () => {
+    const { state } = useLocation(); 
     const [data, setData] = useState({});
     const navigate = useNavigate();
+
+    useEffect(() => {
+        setData(state);
+    }, [state])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -16,20 +21,20 @@ const CreateScoutingReport = () => {
             updatedAt: Date.now() 
         };
         axios
-            .post('/create', scoutingReport)
+            .post(`/update/${data._id}`, scoutingReport)
             .then(() => navigate('/'));
     };
 
-    const handleClear = () => {
-        setData({});
+    const handleBack = () => {
+        navigate('/');
     };
 
     return (
         <div className="create-container">
             <div className="form-container">
-                <form onSubmit={handleSubmit} onReset={handleClear}>
+                <form onSubmit={handleSubmit} onReset={handleBack}>
                     <div className="row d-flex justify-content-between" style={{ paddingRight: 24, marginBottom: 30 }}>
-                        <h4>Create Scouting Report</h4>
+                        <h4>Edit Scouting Report</h4>
                         <Link to='/'>
                             <button className="btn btn-outline-primary">Browse</button>
                         </Link>
@@ -157,8 +162,8 @@ const CreateScoutingReport = () => {
                             <br />
                         
                             <div className="col text-right" style={{ width: 210, marginTop: 10 }}>
-                                <button type="reset" className="btn btn-primary mr-3">Clear</button>
-                                <button type="submit" className="btn btn-primary">Submit</button>
+                                <button type="reset" className="btn btn-primary mr-3">Back</button>
+                                <button type="submit" className="btn btn-primary">Save</button>
                             </div>
                         </div>
                     </div>
@@ -168,4 +173,4 @@ const CreateScoutingReport = () => {
     )
 };
 
-export default CreateScoutingReport;
+export default EditScoutingReport;

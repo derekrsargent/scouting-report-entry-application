@@ -1,16 +1,14 @@
-## Baseball Scouting Entry System
+## Scouting Report Entry System
 
 This project uses a MERN stack (MongoDB, Express, React, Node.js). 
 
 ### Initial Set-Up
 
-Replace `<PASSWORD>` placeholder in ATLAS_URI in `server/config.env` file with password that was provided via email. 
+Replace `<PASSWORD>` placeholder in `ATLAS_URI` inside the `server/config.env` file with password that was provided via email. 
 
 ### Available Scripts
 
-In the root of the project directory run `npm install` to install the `concurrency` package.\Then 
-run `npm install` in both the client folder and server folder to install the 
-packages for the both the frontend and backend. 
+In the root of the project directory run `npm install-all` to install the package dependancies in both the client folder and server folder to install for the frontend and backend. 
 
 To run the app, in the root of the project directory run `npm run dev`.
 
