@@ -13,5 +13,9 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.1.3"
+  }
 }

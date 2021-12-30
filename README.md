@@ -8,7 +8,7 @@ Replace `<PASSWORD>` placeholder in `ATLAS_URI` inside the `server/config.env` f
 
 ### Available Scripts
 
-In the root of the project directory run `npm install-all` to install the package dependancies in both the client folder and server folder to install for the frontend and backend. 
+In the root of the project directory run `npm run install-all` to install the package dependancies in both the client folder and server folder to install for the frontend and backend. 
 
 To run the app, in the root of the project directory run `npm run dev`.
 
